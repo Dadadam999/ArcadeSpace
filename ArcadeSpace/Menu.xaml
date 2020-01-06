@@ -1,0 +1,36 @@
+﻿<UserControl x:Name="MenuControl" x:Class="ArcadeSpace.Menu"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ArcadeSpace"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800" SizeChanged="MenuControl_SizeChanged">
+    <Canvas x:Name="MenuSpace" x:FieldModifier="public" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="800">
+        <Label x:Name="Score_Menu" x:FieldModifier="public" Content="Score: 0" Canvas.Left="0" Canvas.Top="0" RenderTransformOrigin="0.5,0.5" Foreground="#FFFF8B00">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="22.807"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+        <StackPanel x:Name="StackMenu" Height="100" Canvas.Left="334" Canvas.Top="190" Width="76">
+            <Button Content="Start" Margin="0,0,0,15" Click="Button_Click" Background="#FFFF8B00"/>
+            <Button Content="About" Margin="0,0,0,15" Background="#FFFF8B00" Click="Button_Click_2"/>
+            <Button Content="Exit" Margin="1,0,0,0" Background="#FFFF8B00" Click="Button_Click_1"/>
+        </StackPanel>
+        <Label x:Name="Best_Score_Menu" x:FieldModifier="public" Content="Best score: 0" Canvas.Left="0" Canvas.Top="50" RenderTransformOrigin="0.5,0.5" Foreground="#FFFF8B00">
+            <Label.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="22.807"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Label.RenderTransform>
+        </Label>
+    </Canvas>
+</UserControl>
