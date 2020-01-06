@@ -92,7 +92,7 @@ namespace ArcadeSpace
             Collaider.Height = ActualHeight * 0.9;
             Collaider.X = Canvas.GetLeft(this) + ActualWidth * 0.25;
             Collaider.Y = Canvas.GetTop(this) + ActualWidth * 0.05;
-            //forgit
+          
         }
 
         #region view_collision
