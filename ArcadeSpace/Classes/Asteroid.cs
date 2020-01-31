@@ -30,7 +30,7 @@ namespace ArcadeSpace
             this.HeightGameWindow = HeightGameWindow;
             SourceInit = new BitmapImage();
             SourceInit.BeginInit();
-            SourceInit.UriSource = new Uri(@"pack://application:,,,/Resurces/Asteroid_test.png");
+            SourceInit.UriSource = new Uri(@"pack://application:,,,/Resurces/Asteroid_fix.png");
             switch (rnd.Next(1, 4))
             {
                 default:
@@ -87,25 +87,25 @@ namespace ArcadeSpace
         }
 
         #region view_collision
-        public Rectangle CollaiderView { get; set; }
-        public void InitCollaiderView(ref Canvas GameSpace)
-        {
-            CollaiderView = new Rectangle();
-            CollaiderView.Fill = Brushes.Red;
-            MoveCollaiderView();
-            GameSpace.Children.Add(CollaiderView);
-        }
-        public void MoveCollaiderView()
-        {
-            CollaiderView.Width = Collaider.Width;
-            CollaiderView.Height = Collaider.Height;
-            Canvas.SetLeft(CollaiderView, Collaider.X);
-            Canvas.SetTop(CollaiderView, Collaider.Y);
-        }
-        public void RemoveCollaiderView(ref Canvas GameSpace)
-        {
-            GameSpace.Children.Remove(CollaiderView);
-        }
+        //public Rectangle CollaiderView { get; set; }
+        //public void InitCollaiderView(ref Canvas GameSpace)
+        //{
+        //    CollaiderView = new Rectangle();
+        //    CollaiderView.Fill = Brushes.Red;
+        //    MoveCollaiderView();
+        //    GameSpace.Children.Add(CollaiderView);
+        //}
+        //public void MoveCollaiderView()
+        //{
+        //    CollaiderView.Width = Collaider.Width;
+        //    CollaiderView.Height = Collaider.Height;
+        //    Canvas.SetLeft(CollaiderView, Collaider.X);
+        //    Canvas.SetTop(CollaiderView, Collaider.Y);
+        //}
+        //public void RemoveCollaiderView(ref Canvas GameSpace)
+        //{
+        //    GameSpace.Children.Remove(CollaiderView);
+        //}
         #endregion
     }
 }
