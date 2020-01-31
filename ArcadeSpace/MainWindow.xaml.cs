@@ -189,7 +189,6 @@ namespace ArcadeSpace
                         couldaun_asteroid = 40;
                         asteroids[asteroids.Count - 1].Speed = speed_game;
                         asteroids[asteroids.Count - 1].InitCollaiderView(ref GameSpace);
-                        asteroids[asteroids.Count - 1].initialized();
                     }
                     couldaun_asteroid--;
 
@@ -231,7 +230,7 @@ namespace ArcadeSpace
                                         else
                                         {
                                             asteroids[iast].CurrentHealth += 1;
-                                            //asteroids[iast].resize(ActualWidth);
+                                            asteroids[iast].resize(ActualWidth);
                                             Canvas.SetTop(asteroids[iast], Canvas.GetTop(lasers[ilas]) - asteroids[iast].ActualHeight / 2);
                                             score += 5;
                                             if (!GameSpace.Children.Contains(Score)) GameSpace.Children.Add(Score);

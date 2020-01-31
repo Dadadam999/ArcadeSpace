@@ -60,27 +60,19 @@ namespace ArcadeSpace
             CurrentHealth = rnd.Next(MinHealth, MaxHealth);
             Source = SourceInit;
             GameSpace.Children.Add(this);
-            //Initialized += new EventHandler(initialized);
-        }
-        public void initialized() {
-                if (IsInitialized) MessageBox.Show(ActualWidth.ToString());
-                resize(WidthGameWindow);
-                Canvas.SetTop(this, rnd.Next(0, Convert.ToInt32(HeightGameWindow - ActualHeight)));
-                Canvas.SetLeft(this, WidthGameWindow + ActualWidth);
+            resize(WidthGameWindow);
+            Canvas.SetTop(this, rnd.Next(0, Convert.ToInt32(HeightGameWindow - ActualHeight)));
+            Canvas.SetLeft(this, WidthGameWindow + ActualWidth);
 
-                //Canvas.SetZIndex(this, 998);
-                Collaider = new Rect();
-                update_collaider();
+           // Canvas.SetZIndex(this, 998);
+            Collaider = new Rect();
+            update_collaider();
         }
         public void resize(double WidthGW)
         {
             resizeK = ActualWidth / ActualHeight;
-
-            //MessageBox.Show(WidthGW + " " + ActualWidth + " " + ActualHeight + " " + " " + resizeK);
-
             Width = WidthGW / CurrentHealth / 2;
             Height = ActualWidth / resizeK;
-           
         }
         public void move()
         {
@@ -92,7 +84,6 @@ namespace ArcadeSpace
             Collaider.Height = ActualHeight * 0.9;
             Collaider.X = Canvas.GetLeft(this) + ActualWidth * 0.25;
             Collaider.Y = Canvas.GetTop(this) + ActualWidth * 0.05;
-          
         }
 
         #region view_collision
