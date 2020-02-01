@@ -59,7 +59,7 @@ namespace ArcadeSpace
 
             ship = new Ship(ActualWidth, ActualHeight, ref GameSpace);
             ship.update_collaider();
-            //ship.InitCollaiderView(ref GameSpace);
+            ship.InitCollaiderView(ref GameSpace);
 
             timer = new Timer(timer_Tick, 0, 0, 30);
             gf = new GifAnimation();
@@ -97,15 +97,15 @@ namespace ArcadeSpace
             {
                 ship.resize(ActualWidth);
                 ship.update_collaider();
-                //ship.MoveCollaiderView();
+                ship.MoveCollaiderView();
             }
 
             if (asteroids.Count > 0)
                 foreach (Asteroid a in asteroids)
                 {
-                   // a.resize(ActualWidth);
+                    a.resize(ActualWidth);
                     a.update_collaider();
-                   // a.MoveCollaiderView();
+                    a.MoveCollaiderView();
                 }
         }
         private void Window_StateChanged(object sender, EventArgs e)
@@ -120,15 +120,15 @@ namespace ArcadeSpace
             {
                 ship.resize(ActualWidth);
                 ship.update_collaider();
-               // ship.MoveCollaiderView();
+                ship.MoveCollaiderView();
             }
 
             if (asteroids.Count > 0)
                 foreach (Asteroid a in asteroids)
                 {
-                   // a.resize(ActualWidth);
+                    a.resize(ActualWidth);
                     a.update_collaider();
-                  //  a.MoveCollaiderView();
+                    a.MoveCollaiderView();
                 }
         }
 
@@ -155,7 +155,8 @@ namespace ArcadeSpace
                     //push to keyboard
                     ship.move(ActualWidth, ActualHeight, key_down);
                     ship.update_collaider();
-                  //  ship.MoveCollaiderView();
+                    ship.MoveCollaiderView();
+
                     if (key_down == "Space" && couldaun_shoot <= 0)
                     {
                         lasers.Add(new Laser(ref ship, ref GameSpace));
@@ -188,7 +189,7 @@ namespace ArcadeSpace
                         asteroids.Add(new Asteroid(this.ActualWidth, this.ActualHeight, ref GameSpace));
                         couldaun_asteroid = 40;
                         asteroids[asteroids.Count - 1].Speed = speed_game;
-                      //  asteroids[asteroids.Count - 1].InitCollaiderView(ref GameSpace);
+                        asteroids[asteroids.Count - 1].InitCollaiderView(ref GameSpace);
                     }
                     couldaun_asteroid--;
 
@@ -199,13 +200,13 @@ namespace ArcadeSpace
                         {
                             a.move();
                             a.update_collaider();
-                         //   a.MoveCollaiderView();
+                            a.MoveCollaiderView();
                         }
                         //remove asteroid
                         for (int i = 0; i < asteroids.Count; i++)
                             if (Canvas.GetLeft(asteroids[i]) <= 0 - asteroids[i].ActualWidth)
                             {
-                               // asteroids[i].RemoveCollaiderView(ref GameSpace);
+                                asteroids[i].RemoveCollaiderView(ref GameSpace);
                                 GameSpace.Children.Remove(asteroids[i]);
                                 asteroids.Remove(asteroids[i]);
                             }
