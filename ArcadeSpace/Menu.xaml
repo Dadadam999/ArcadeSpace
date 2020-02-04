@@ -32,5 +32,9 @@
                 </TransformGroup>
             </Label.RenderTransform>
         </Label>
+        <StackPanel x:Name="ControllInput" Height="52" Canvas.Left="10" Canvas.Top="388" Width="100">
+            <Label Content="Move: W A S D" Canvas.Left="235" Canvas.Top="368"  Foreground="#FFFF8B00" Width="93"/>
+            <Label Content="Shoot: Space" Canvas.Left="235" Canvas.Top="399"  Foreground="#FFFF8B00" Width="85"/>
+        </StackPanel>
     </Canvas>
 </UserControl>
