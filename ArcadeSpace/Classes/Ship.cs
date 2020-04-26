@@ -31,7 +31,7 @@ namespace ArcadeSpace
             GameSpace.Children.Add(this);
             Canvas.SetTop(this, HeightGameWindow / 2 + ActualHeight / 2);
             Canvas.SetLeft(this, 0);
-            //Canvas.SetZIndex(this, 999);
+            Canvas.SetZIndex(this, 999);
 
             collaiders = new List<CollaiderRect>();
             collaiders.Add(new CollaiderRect());
@@ -88,37 +88,37 @@ namespace ArcadeSpace
         }
 
         #region view_collision
-        public Rectangle CollaiderView1 { get; set; }
-        public Rectangle CollaiderView2 { get; set; }
-        public void InitCollaiderView(ref Canvas GameSpace)
-        {
-            CollaiderView1 = new Rectangle();
-            CollaiderView1.Fill = Brushes.Green;
-            GameSpace.Children.Add(CollaiderView1);
+        //public Rectangle CollaiderView1 { get; set; }
+        //public Rectangle CollaiderView2 { get; set; }
+        //public void InitCollaiderView(ref Canvas GameSpace)
+        //{
+        //    CollaiderView1 = new Rectangle();
+        //    CollaiderView1.Fill = Brushes.Green;
+        //    GameSpace.Children.Add(CollaiderView1);
 
-            CollaiderView2 = new Rectangle();
-            CollaiderView2.Fill = Brushes.Green;
-            GameSpace.Children.Add(CollaiderView2);
+        //    CollaiderView2 = new Rectangle();
+        //    CollaiderView2.Fill = Brushes.Green;
+        //    GameSpace.Children.Add(CollaiderView2);
 
-            MoveCollaiderView();
-        }
-        public void MoveCollaiderView()
-        {
-            CollaiderView1.Width = collaiders[0].Width;
-            CollaiderView1.Height = collaiders[0].Height;
-            Canvas.SetLeft(CollaiderView1, collaiders[0].X);
-            Canvas.SetTop(CollaiderView1, collaiders[0].Y);
+        //    MoveCollaiderView();
+        //}
+        //public void MoveCollaiderView()
+        //{
+        //    CollaiderView1.Width = collaiders[0].Width;
+        //    CollaiderView1.Height = collaiders[0].Height;
+        //    Canvas.SetLeft(CollaiderView1, collaiders[0].X);
+        //    Canvas.SetTop(CollaiderView1, collaiders[0].Y);
 
-            CollaiderView2.Width = collaiders[1].Width;
-            CollaiderView2.Height = collaiders[1].Height;
-            Canvas.SetLeft(CollaiderView2, collaiders[1].X);
-            Canvas.SetTop(CollaiderView2, collaiders[1].Y);
-        }
-        public void RemoveCollaiderView(ref Canvas GameSpace)
-        {
-            GameSpace.Children.Remove(CollaiderView1);
-            GameSpace.Children.Remove(CollaiderView2);
-        }
+        //    CollaiderView2.Width = collaiders[1].Width;
+        //    CollaiderView2.Height = collaiders[1].Height;
+        //    Canvas.SetLeft(CollaiderView2, collaiders[1].X);
+        //    Canvas.SetTop(CollaiderView2, collaiders[1].Y);
+        //}
+        //public void RemoveCollaiderView(ref Canvas GameSpace)
+        //{
+        //    GameSpace.Children.Remove(CollaiderView1);
+        //    GameSpace.Children.Remove(CollaiderView2);
+        //}
         #endregion
     }
 }

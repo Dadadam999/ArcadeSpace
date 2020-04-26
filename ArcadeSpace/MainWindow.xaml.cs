@@ -24,6 +24,8 @@ namespace ArcadeSpace
         GifAnimation gf;
         Menu menu = new Menu();
         Label Score;
+        bool resize_enabled = true;
+        double FixWidth, FixHeight;
         public static MainWindow selfref { get; set; }
         public MainWindow()
         {
@@ -49,6 +51,9 @@ namespace ArcadeSpace
 
         public void start_game()
         {
+            resize_enabled = false;
+            FixWidth = Width;
+            FixHeight = Height;
             lasers.Clear();
             exps.Clear();
             asteroids.Clear();
@@ -59,7 +64,7 @@ namespace ArcadeSpace
 
             ship = new Ship(ActualWidth, ActualHeight, ref GameSpace);
             ship.update_collaider();
-            ship.InitCollaiderView(ref GameSpace);
+            //ship.InitCollaiderView(ref GameSpace); // для отображения колизий
 
             timer = new Timer(timer_Tick, 0, 0, 30);
             gf = new GifAnimation();
@@ -74,6 +79,7 @@ namespace ArcadeSpace
 
         public void end_game()
         {
+            resize_enabled = true;
             timer.Dispose();
             open_menu();
             GameSpace.Children.Remove(Score);
@@ -87,49 +93,62 @@ namespace ArcadeSpace
         }
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {
-            GameSpace.Width = ActualWidth;
-            GameSpace.Height = ActualHeight;
-
-            menu.Width = ActualWidth;
-            menu.Height = ActualHeight;
-
-            if (ship != null)
+            if (resize_enabled == true)
             {
-                ship.resize(ActualWidth);
-                ship.update_collaider();
-                ship.MoveCollaiderView();
-            }
+                GameSpace.Width = ActualWidth;
+                GameSpace.Height = ActualHeight;
 
-            if (asteroids.Count > 0)
-                foreach (Asteroid a in asteroids)
+                menu.Width = ActualWidth;
+                menu.Height = ActualHeight;
+
+                if (ship != null)
                 {
-                    a.resize(ActualWidth);
-                    a.update_collaider();
-                    a.MoveCollaiderView();
+                    ship.resize(ActualWidth);
+                    ship.update_collaider();
+                    //ship.MoveCollaiderView(); //для вывода коализии
                 }
+
+                if (asteroids.Count > 0)
+                    foreach (Asteroid a in asteroids)
+                    {
+                        a.resize(ActualWidth);
+                        a.update_collaider();
+                        //a.MoveCollaiderView(); //для вывода коализии
+                    }
+            }
+            else
+            {
+                Width = FixWidth;
+                Height = FixHeight;
+            } 
         }
         private void Window_StateChanged(object sender, EventArgs e)
         {
-            GameSpace.Width = ActualWidth;
-            GameSpace.Height = ActualHeight;
-
-            menu.Width = ActualWidth;
-            menu.Height = ActualHeight;
-
-            if (ship != null)
+            if (resize_enabled == true)
             {
-                ship.resize(ActualWidth);
-                ship.update_collaider();
-                ship.MoveCollaiderView();
-            }
+                GameSpace.Width = ActualWidth;
+                GameSpace.Height = ActualHeight;
 
-            if (asteroids.Count > 0)
-                foreach (Asteroid a in asteroids)
+                menu.Width = ActualWidth;
+                menu.Height = ActualHeight;
+
+                if (ship != null)
                 {
-                    a.resize(ActualWidth);
-                    a.update_collaider();
-                    a.MoveCollaiderView();
+                    ship.resize(ActualWidth);
+                    ship.update_collaider();
+                    //ship.MoveCollaiderView();  //для вывода коализии
                 }
+
+                if (asteroids.Count > 0)
+                    foreach (Asteroid a in asteroids)
+                    {
+                        a.resize(ActualWidth);
+                        a.update_collaider();
+                        //a.MoveCollaiderView();  //для вывода коализии
+                    }
+            }
+            else 
+                WindowState = WindowState.Normal;
         }
 
         private void Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
@@ -155,7 +174,7 @@ namespace ArcadeSpace
                     //push to keyboard
                     ship.move(ActualWidth, ActualHeight, key_down);
                     ship.update_collaider();
-                    ship.MoveCollaiderView();
+                    //ship.MoveCollaiderView();  //для вывода коализии
 
                     if (key_down == "Space" && couldaun_shoot <= 0)
                     {
@@ -189,7 +208,7 @@ namespace ArcadeSpace
                         asteroids.Add(new Asteroid(this.ActualWidth, this.ActualHeight, ref GameSpace));
                         couldaun_asteroid = 40;
                         asteroids[asteroids.Count - 1].Speed = speed_game;
-                        asteroids[asteroids.Count - 1].InitCollaiderView(ref GameSpace);
+                        //asteroids[asteroids.Count - 1].InitCollaiderView(ref GameSpace);  //для вывода коализии
                     }
                     couldaun_asteroid--;
 
@@ -200,13 +219,13 @@ namespace ArcadeSpace
                         {
                             a.move();
                             a.update_collaider();
-                            a.MoveCollaiderView();
+                            // a.MoveCollaiderView();  //для вывода коализии
                         }
                         //remove asteroid
                         for (int i = 0; i < asteroids.Count; i++)
                             if (Canvas.GetLeft(asteroids[i]) <= 0 - asteroids[i].ActualWidth)
                             {
-                                asteroids[i].RemoveCollaiderView(ref GameSpace);
+                                // asteroids[i].RemoveCollaiderView(ref GameSpace);  //для вывода коализии
                                 GameSpace.Children.Remove(asteroids[i]);
                                 asteroids.Remove(asteroids[i]);
                             }
@@ -262,7 +281,7 @@ namespace ArcadeSpace
                                 end_game();
                             }
                 }
-                catch (Exception e) { }
+                catch (Exception e) { Console.WriteLine(e); }
             }));
         }
         private void Window_KeyDown(object sender, KeyEventArgs e)
