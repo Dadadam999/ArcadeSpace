@@ -11,10 +11,7 @@
             <ColumnDefinition Width="30*"/>
             <ColumnDefinition Width="421*"/>
         </Grid.ColumnDefinitions>
-        <RichTextBox x:Name="ContentText" Height="210" Width="451" Grid.ColumnSpan="2" Margin="0,0,0,1" Foreground="#FFFF7400" FontSize="18">
-            <RichTextBox.Background>
-                <ImageBrush ImageSource="Resurces/sky-texture_(5).jpg"/>
-            </RichTextBox.Background>
+        <RichTextBox x:Name="ContentText" Height="210" Width="451" Grid.ColumnSpan="2" Margin="0,0,0,1" Foreground="#FFFF7400" FontSize="18" BorderBrush="Black" Background="Black">
             <FlowDocument>
                 <Paragraph>
                     <Run Text=""/>

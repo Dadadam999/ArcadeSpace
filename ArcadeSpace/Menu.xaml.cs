@@ -25,10 +25,8 @@ namespace ArcadeSpace {
         {
             InitializeComponent();
             selfrefmenu = this;
-            Canvas.SetLeft(StackMenu, ActualWidth / 2 - StackMenu.Width / 2);
-            Canvas.SetTop(StackMenu, ActualHeight / 2 - StackMenu.Height / 2);
-            Canvas.SetLeft(Score_Menu, 0);
-            Canvas.SetTop(Score_Menu, 0);
+
+            resize_element();
 
             if (File.Exists("bc"))
                 try {
@@ -45,11 +43,18 @@ namespace ArcadeSpace {
 
         private void MenuControl_SizeChanged(object sender, SizeChangedEventArgs e)
         {
+            resize_element();
+        }
+
+        void resize_element() {
             Canvas.SetLeft(StackMenu, ActualWidth / 2 - StackMenu.Width / 2);
             Canvas.SetTop(StackMenu, ActualHeight / 2 - StackMenu.Height / 2);
 
-            Canvas.SetLeft(Score_Menu, 0);
-            Canvas.SetTop(Score_Menu, 0);
+            Canvas.SetLeft(Score_Stock, 0);
+            Canvas.SetTop(Score_Stock, 0);
+
+            Canvas.SetLeft(ControllInput, 0);
+            Canvas.SetTop(ControllInput, Height - ControllInput.ActualHeight * 1.8);
         }
 
         private void Button_Click_1(object sender, RoutedEventArgs e)

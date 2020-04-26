@@ -7,30 +7,54 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" SizeChanged="MenuControl_SizeChanged">
     <Canvas x:Name="MenuSpace" x:FieldModifier="public" HorizontalAlignment="Left" VerticalAlignment="Top" Height="450" Width="800">
-        <Label x:Name="Score_Menu" x:FieldModifier="public" Content="Score: 0" Canvas.Left="0" Canvas.Top="0" RenderTransformOrigin="0.5,0.5" Foreground="#FFFF8B00">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="22.807"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
+        <StackPanel x:Name="Score_Stock" Height="90" Canvas.Left="10" Canvas.Top="10" Width="140">
+            <Label x:Name="Score_Menu" x:FieldModifier="public" Content="Score: 0" RenderTransformOrigin="0.5,0.5" Foreground="#FFFF8B00" Margin="0,20,0,0">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="22.807"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label x:Name="Best_Score_Menu" x:FieldModifier="public" Content="Best score: 0" RenderTransformOrigin="0.5,0.5" Foreground="#FFFF8B00">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="22.807"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </StackPanel>
         <StackPanel x:Name="StackMenu" Height="100" Canvas.Left="334" Canvas.Top="190" Width="76">
             <Button Content="Start" Margin="0,0,0,15" Click="Button_Click" Background="#FFFF8B00"/>
             <Button Content="About" Margin="0,0,0,15" Background="#FFFF8B00" Click="Button_Click_2"/>
             <Button Content="Exit" Margin="1,0,0,0" Background="#FFFF8B00" Click="Button_Click_1"/>
         </StackPanel>
-        <Label x:Name="Best_Score_Menu" x:FieldModifier="public" Content="Best score: 0" Canvas.Left="0" Canvas.Top="50" RenderTransformOrigin="0.5,0.5" Foreground="#FFFF8B00">
-            <Label.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="22.807"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Label.RenderTransform>
-        </Label>
+        <StackPanel x:Name="ControllInput" Height="55" Canvas.Left="10" Canvas.Top="385" Width="100">
+            <Label Content="Shoot - Space"  Foreground="#FFFF8B00">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-22.807"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+            <Label Content="Move - W A S D" Foreground="#FFFF8B00">
+                <Label.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-22.807"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </Label.RenderTransform>
+            </Label>
+        </StackPanel>
     </Canvas>
 </UserControl>
