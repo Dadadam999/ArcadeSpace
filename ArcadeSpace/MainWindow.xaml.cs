@@ -23,6 +23,7 @@ namespace ArcadeSpace
         int couldaun_shoot = 0, couldaun_asteroid = 0, score = 0, speed_game = 4, k_loop = 0;
         GifAnimation gf;
         Menu menu = new Menu();
+        StackPanel ScoreStock;
         Label Score;
         bool resize_enabled = true;
         double FixWidth, FixHeight;
@@ -69,10 +70,13 @@ namespace ArcadeSpace
             timer = new Timer(timer_Tick, 0, 0, 30);
             gf = new GifAnimation();
             gf.create_gif_anim(ship, new[] { new BitmapImage(new Uri(@"pack://application:,,,/Resurces/ship1.png")), new BitmapImage(new Uri(@"pack://application:,,,/Resurces/ship2.png")) });
+            
+            ScoreStock = Menu.selfrefmenu.Score_Stock;
             Score = Menu.selfrefmenu.Score_Menu;
-            Menu.selfrefmenu.MenuSpace.Children.Remove(Score);
-            GameSpace.Children.Add(Score);
+            Menu.selfrefmenu.MenuSpace.Children.Remove(ScoreStock);
+            GameSpace.Children.Add(ScoreStock);
             Score.Content = "Score: 0";
+            
             speed_game = 4;
             k_loop = 0;
         }
@@ -82,8 +86,8 @@ namespace ArcadeSpace
             resize_enabled = true;
             timer.Dispose();
             open_menu();
-            GameSpace.Children.Remove(Score);
-            Menu.selfrefmenu.MenuSpace.Children.Add(Score);
+            GameSpace.Children.Remove(ScoreStock);
+            Menu.selfrefmenu.MenuSpace.Children.Add(ScoreStock);
             if (Menu.selfrefmenu.best_score < score)
             {
                 Menu.selfrefmenu.best_score = score;
@@ -244,7 +248,7 @@ namespace ArcadeSpace
                                             GameSpace.Children.Remove(asteroids[iast]);
                                             asteroids.Remove(asteroids[iast]);
                                             score += 10;
-                                            if (!GameSpace.Children.Contains(Score)) GameSpace.Children.Add(Score);
+                                           // if (!GameSpace.Children.Contains(Score)) GameSpace.Children.Add(Score);
                                             Score.Content = "Score: " + score.ToString();
                                         }
                                         else
@@ -253,7 +257,7 @@ namespace ArcadeSpace
                                             asteroids[iast].resize(ActualWidth);
                                             Canvas.SetTop(asteroids[iast], Canvas.GetTop(lasers[ilas]) - asteroids[iast].ActualHeight / 2);
                                             score += 5;
-                                            if (!GameSpace.Children.Contains(Score)) GameSpace.Children.Add(Score);
+                                           // if (!GameSpace.Children.Contains(Score)) GameSpace.Children.Add(Score);
                                             Score.Content = "Score: " + score.ToString();
                                         }
 
