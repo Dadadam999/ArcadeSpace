@@ -31,7 +31,7 @@ namespace ArcadeSpace
             GameSpace.Children.Add(this);
             Canvas.SetTop(this, HeightGameWindow / 2 + ActualHeight / 2);
             Canvas.SetLeft(this, 0);
-            Canvas.SetZIndex(this, 999);
+            Canvas.SetZIndex(this, 997);
 
             collaiders = new List<CollaiderRect>();
             collaiders.Add(new CollaiderRect());

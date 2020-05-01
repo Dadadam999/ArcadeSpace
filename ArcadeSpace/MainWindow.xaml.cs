@@ -42,7 +42,7 @@ namespace ArcadeSpace
             if (!GameSpace.Children.Contains(menu)) GameSpace.Children.Add(menu);
             menu.Width = ActualWidth;
             menu.Height = ActualHeight;
-            Canvas.SetZIndex(menu, 1);
+            Canvas.SetZIndex(menu, 999);
         }
 
         public void close_menu()
@@ -75,6 +75,7 @@ namespace ArcadeSpace
             Score = Menu.selfrefmenu.Score_Menu;
             Menu.selfrefmenu.MenuSpace.Children.Remove(ScoreStock);
             GameSpace.Children.Add(ScoreStock);
+            Canvas.SetZIndex(ScoreStock, 998);
             Score.Content = "Score: 0";
             
             speed_game = 4;
@@ -292,7 +293,6 @@ namespace ArcadeSpace
         {
             key_down = e.Key.ToString();
         }
-
         bool check_collision(Rect one, Rect two)
         {
             return one.IntersectsWith(two);

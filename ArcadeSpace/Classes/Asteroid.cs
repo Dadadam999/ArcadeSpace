@@ -60,7 +60,7 @@ namespace ArcadeSpace
             Canvas.SetTop(this, rnd.Next(0, Convert.ToInt32(HeightGameWindow - ActualHeight)));
             Canvas.SetLeft(this, WidthGameWindow + ActualWidth);
 
-            Canvas.SetZIndex(this, 998);
+            Canvas.SetZIndex(this, 996);
             Collaider = new Rect();
             update_collaider();
         }
